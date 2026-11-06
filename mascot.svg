@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 310" role="img" aria-labelledby="t"><title id="t">Fritzi, rubah kecil ceria maskot DeutschNest</title>
+<defs><linearGradient id="fur" x1="0" x2="1" y2="1"><stop stop-color="#ffa839"/><stop offset="1" stop-color="#eb712e"/></linearGradient><linearGradient id="belly" y2="1" x2=".2"><stop stop-color="#fffdf2"/><stop offset="1" stop-color="#ffdfb4"/></linearGradient></defs>
+<ellipse cx="168" cy="292" rx="94" ry="11" fill="#329b0d" opacity=".2"/>
+<path d="M226 202c41-51 57-3 58 29 0 30-25 51-56 39-27-10-39-38-31-58" fill="url(#fur)" stroke="#b95b20" stroke-width="5" stroke-linejoin="round"/>
+<path d="M284 231c-1 26-21 45-48 40 5-22 20-41 48-40" fill="#fff6df"/>
+<path d="M97 196c-13 15-19 39-16 67 4 23 21 31 49 27 11-11 16-25 12-44m84-51c10 17 18 44 13 71-3 21-19 27-43 25-13-12-18-32-12-48" fill="url(#fur)" stroke="#bd6227" stroke-width="5" stroke-linejoin="round"/>
+<ellipse cx="159" cy="224" rx="72" ry="68" fill="url(#fur)" stroke="#bd6227" stroke-width="5"/>
+<ellipse cx="163" cy="245" rx="48" ry="40" fill="url(#belly)"/>
+<path d="M112 261c-9 0-18 6-19 15-2 16 19 17 39 10l15-11m66-14c9 1 19 7 20 16 1 16-18 16-40 9l-14-11" fill="#f08630" stroke="#b95b20" stroke-width="5" stroke-linejoin="round"/>
+<!-- scarf -->
+<path d="M113 190c27 23 75 23 99 0l6 25c-38 23-78 18-109-2z" fill="#447cd1" stroke="#285dae" stroke-width="4"/>
+<path d="M185 211c5 22 13 34 11 59l-23-8c1-20-4-31-9-46" fill="#3977da" stroke="#285dae" stroke-width="4"/>
+<path d="M174 247l21 4m-19 9 19 5" stroke="#8ad5f8" stroke-width="4"/>
+<!-- fox ears and big head -->
+<path d="M67 73 87 6c3-9 11-6 16 1l41 46m34 0 44-47c7-8 15-6 17 5l13 65" fill="url(#fur)" stroke="#b65b25" stroke-width="6" stroke-linejoin="round"/>
+<path d="m84 69 12-39 24 30m83 0 24-30 8 39" fill="#ffdfab"/>
+<path d="M60 110c-2-53 38-82 100-82 70 0 109 40 102 96-4 34-23 56-50 76-20 14-83 16-111-3-30-20-42-51-41-87" fill="url(#fur)" stroke="#b65b25" stroke-width="6"/>
+<path d="M68 143c8-16 27-24 44-20l44 41 45-41c23-6 43 8 49 27-12 33-45 56-91 56-43 0-75-24-91-63z" fill="#fff8e5"/>
+<ellipse cx="115" cy="120" rx="10" ry="13" fill="#272c29"/><ellipse cx="204" cy="120" rx="10" ry="13" fill="#272c29"/>
+<ellipse cx="118" cy="116" rx="3.8" ry="4.8" fill="white"/><ellipse cx="207" cy="116" rx="3.8" ry="4.8" fill="white"/>
+<ellipse cx="90" cy="144" rx="16" ry="8" fill="#ffa5a0" opacity=".85"/><ellipse cx="230" cy="144" rx="16" ry="8" fill="#ffa5a0" opacity=".85"/>
+<path d="M143 148q17-13 34 0-2 19-16 19-16 0-18-19z" fill="#333b35"/><path d="M160 166v8m0 0q-15 15-27 1m27-1q15 15 27 1" stroke="#7f604d" stroke-width="4" stroke-linecap="round" fill="none"/>
+<path d="M80 91c7-6 16-7 23-5m112 0c7-3 15-2 22 6" stroke="#be642f" stroke-width="5" stroke-linecap="round" fill="none"/>
+<path d="m120 65 7 6m57-5 7-6" stroke="#ffcf83" stroke-width="6" stroke-linecap="round"/>
+<g fill="#fff8d5"><path d="m40 25 5 15 15 5-15 5-5 15-5-15-15-5 15-5z"/><circle cx="288" cy="108" r="6"/><circle cx="26" cy="185" r="5"/></g>
+</svg>
