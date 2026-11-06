@@ -58,3 +58,27 @@ h1,h2,h3,p{overflow-wrap:break-word}h1,h2,h3{line-height:1.25}.eyebrow{font-size
     background: #fff;
   }
 }
+
+
+/* DeutschNest v2.0.2 — mode tenang permanen.
+   Fritzi, teks, tombol, indikator, dan elemen lainnya tidak bergerak otomatis.
+   Tata letak level tetap statis dan tidak kehilangan posisi. */
+html { scroll-behavior: auto !important; }
+*, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+.mascot-img,
+.hero-daisy,
+.mascot-speech,
+.path-bubble {
+  transform: none !important;
+}
+.btn:hover:not(:disabled),
+.btn:active:not(:disabled),
+.roadmap-card:hover,
+.path-node:hover:not(:disabled),
+.path-node:active:not(:disabled) {
+  transform: none !important;
+}
