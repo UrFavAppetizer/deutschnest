@@ -1,4 +1,4 @@
-const CACHE = 'deutschnest-v2.0.0';
+const CACHE = 'deutschnest-v2.0.1';
 const ASSETS = ['./','./index.html','./style.css','./app.js','./lessons.js','./manifest.webmanifest','./icon.svg','./mascot.svg','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
