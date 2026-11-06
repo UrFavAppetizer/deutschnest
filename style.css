@@ -24,3 +24,37 @@ h1,h2,h3,p{overflow-wrap:break-word}h1,h2,h3{line-height:1.25}.eyebrow{font-size
 @media(max-width:790px){.sidebar{display:none}.workspace{margin-left:0;width:100%}.topbar{height:67px;padding:0 19px}.topbar-breadcrumb .topbar-light,.crumb-separator{display:none}.topbar-right{gap:11px}.topbar-level{display:none}#main-content{padding:22px 17px calc(102px + env(safe-area-inset-bottom));min-height:calc(100vh - 100px)}.mobile-nav{position:fixed;z-index:40;bottom:0;left:0;right:0;background:#fffffff4;border-top:2px solid #e7eee2;display:flex;justify-content:space-around;gap:3px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));backdrop-filter:blur(16px)}.mobile-tab{min-width:50px;flex:1;max-width:90px;border:0;background:transparent;color:#abb8a8;border-radius:14px;padding:8px 2px;display:flex;align-items:center;flex-direction:column;gap:4px;font-weight:1000;font-size:10px}.mobile-tab .ico{width:23px;height:23px}.mobile-tab.active{color:#4bb20b;background:#eafbdc}.footer-note{display:none}.hero{min-height:230px}.hero h1{font-size:32px}.hero-visual{width:190px}.hero p{font-size:12px}.stats-strip{gap:9px}.stat-card{padding:13px}.stat-value{font-size:23px}.stat-label{font-size:10px}.stat-icon{width:26px;height:26px}.dashboard-grid{gap:18px}.home-rail{display:grid;grid-template-columns:1fr 1fr}.aside-card{padding:18px}.progress-rail{grid-column:span 2}.all-units{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.learning-path{padding-left:6px;padding-right:6px}.path-step.left{transform:translateX(-37px)}.path-step.right{transform:translateX(37px)}.unit-stage .path-node{height:66px;width:66px}.unit-banner{padding:18px}.unit-banner-icon{font-size:42px}.unit-banner h2{font-size:18px}.lesson-banner{padding:24px}.review-layout,.practice-layout{grid-template-columns:1fr}.profile-grid{grid-template-columns:1fr}.toast{bottom:calc(87px + env(safe-area-inset-bottom))}}
 @media(max-width:570px){.topbar-breadcrumb strong{font-size:14px}.topbar-right{gap:10px}.topbar-xp,.topbar-streak{font-size:11px}.avatar{width:35px;height:35px;font-size:14px}.hero{padding:25px 21px;min-height:263px;align-items:flex-start}.hero-kicker{font-size:9px;padding:7px 9px}.hero h1{font-size:26px;position:relative;z-index:2;max-width:250px;margin:16px 0 11px}.hero p{max-width:250px;font-size:11px;position:relative;z-index:2;line-height:1.6}.hero-visual{width:133px;position:absolute;right:4px;bottom:5px;opacity:.93;height:165px}.mascot-img{max-height:160px;max-width:145px}.mascot-speech{top:-20px;right:0;font-size:10px;padding:7px 8px}.hero-btn{min-height:44px;padding:8px 12px;font-size:11px;position:relative;z-index:3}.stats-strip{gap:8px;margin-bottom:22px}.stat-card{border-radius:16px;padding:12px 10px;min-width:0}.stat-value{font-size:20px;letter-spacing:-.6px}.stat-label{font-size:9px;line-height:1.3}.stat-icon{height:25px;width:25px}.stat-top{margin-bottom:7px}.home-rail{display:flex;flex-direction:column;gap:16px}.progress-rail{grid-column:auto}.progress-rail .roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}.unit-banner{padding:19px 20px}.unit-banner h2{font-size:18px}.unit-banner-icon{font-size:46px}.map-intro{padding:18px 18px 0}.path-step.left{transform:translateX(-53px)}.path-step.right{transform:translateX(53px)}.path-step{min-height:138px}.learning-path{padding-top:54px}.all-units{grid-template-columns:1fr}.unit-stage .path-step{min-height:127px}.unit-stage .path-node{height:71px;width:71px}.lesson-grid{grid-template-columns:1fr}.lesson-banner:after{opacity:.12}.options{grid-template-columns:1fr}.quiz-card{padding:19px}.quiz-title{font-size:22px}.answer-option{min-height:61px}.vocab-grid{grid-template-columns:1fr}.section-heading{align-items:center}.lesson-section .hint{font-size:10px}.settings-actions{gap:9px}.page-title{font-size:29px}.page-desc{font-size:12px}.toolbar{align-items:stretch}.search-input{width:100%}.chip{padding:8px 12px}.content-head{margin-bottom:18px}.profile-grid .stat-card{padding:9px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* DeutschNest v2.0.1 — stabilitas animasi.
+   Menghapus gerakan berulang yang terasa bergetar,
+   tetapi tetap mempertahankan animasi respons ketika kuis selesai. */
+.mascot-img,
+.hero-daisy,
+.path-bubble,
+.path-node.is-active {
+  animation: none;
+}
+.mascot-img,
+.hero-daisy,
+.path-bubble {
+  transform: none;
+}
+
+/* Hover yang 'menempel' pada layar sentuh menyebabkan tombol meloncat. */
+@media (hover: none) {
+  .btn:hover:not(:disabled),
+  .path-node:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Efek blur pada navigasi sering menyebabkan stutter saat scrolling di HP. */
+@media (max-width: 790px) {
+  .topbar,
+  .mobile-nav {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #fff;
+  }
+}
