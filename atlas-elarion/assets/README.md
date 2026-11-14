@@ -12,3 +12,9 @@ Folder ini untuk gambar peta fantasi yang digunakan oleh `photo-atlas.js`. Visua
 
 ## Batasan canon
 Peta ilustrasi adalah bahan visual, bukan geografi baru yang otomatis sah. Penanda interaktif dan catatan canon tertulis tetap menjadi acuan. Beberapa keterangan dalam gambar arsip 3 November sudah bersifat historis: Ryujin benar-benar tiba di ibu kota Day 420 dan menghadiri upacara pada Day 423, meskipun nama resmi kota itu belum ditentukan. Posisi setiap bangunan dalam ilustrasi Avelorn harus dianggap gambaran artistik, bukan denah canon.
+## Tambahan V4 — peta dari pemain
+
+- `capital-illustrated.webp`: peta Ibu Kota Kerajaan Asteria. Ukuran sumber 1448 × 1086.
+- `trade-illustrated.webp`: peta Kawasan Perdagangan Timur. Ukuran sumber 1536 × 1024.
+
+Keduanya sudah disiapkan dalam paket ZIP yang disertakan pada percakapan; unggah berkas WEBP ke folder ini melalui GitHub agar pengunjung publik melihat kedua peta. Javascript pembaca peta sudah disesuaikan dengan landmark pada gambar.
