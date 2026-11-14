@@ -65,7 +65,7 @@ async function stored(key){const d=await db();if(!d)return null;return new Promi
 async function save(key,blob){const d=await db();if(!d)return false;return new Promise(resolve=>{try{const t=d.transaction("images","readwrite");t.objectStore("images").put(blob,key);t.oncomplete=()=>resolve(true);t.onerror=()=>resolve(false)}catch{resolve(false)}})}
 function identify(state){if(state?.mode==="world")return"asteria";if(state?.mode==="realm"&&state?.realm==="asteria")return"asteria";if(state?.mode==="city"&&scenes[state.place])return state.place;return null}
 function currentScene(){const fragment=location.hash.slice(1);if(fragment==="world"||fragment==="asteria"||!fragment)return"asteria";if(scenes[fragment])return fragment;return null}
-function removeImage(){if(imgUrl?.startsWith("blob:"))URL.revokeObjectURL(imgUrl);imgUrl=null;img.removeAttribute("src");pane.hidden=true;$("mapStage").classList.remove("illustrated-active");$("mapSvg").style.opacity="";$("mapSvg").style.pointerEvents="";$("mapStage").style.removeProperty("--art-ratio");hotspots.replaceChildren();}
+function removeImage(){if(imgUrl?.startsWith("blob:"))URL.revokeObjectURL(imgUrl);imgUrl=null;img.onload=null;img.onerror=null;img.removeAttribute("src");pane.hidden=true;$("mapStage").classList.remove("illustrated-active");$("mapSvg").style.opacity="";$("mapSvg").style.pointerEvents="";$("mapStage").style.removeProperty("--art-ratio");hotspots.replaceChildren();}
 function mark(label){if(status)status.textContent=label}
 function renderSpots(key,mode){hotspots.replaceChildren();
  const arr=scenes[key].points.filter(p=>(mode==="world"?p.t==="realm":mode==="realm"?p.t==="place":p.t==="local"));
