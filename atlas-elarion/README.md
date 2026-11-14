@@ -1,4 +1,4 @@
-# Atlas Resmi Elarion ✦ — Illustrated Atlas V3
+# Atlas Resmi Elarion ✦ — Illustrated Atlas V4
 
 **The Stars Beyond Eternity — Interactive Canon Atlas**
 
@@ -10,6 +10,18 @@ Buka `index.html` dengan browser modern. Untuk hosting, GitHub Pages harus diakt
 https://urfavappetizer.github.io/deutschnest/atlas-elarion/
 
 **Catatan:** URL di atas adalah format alamat yang diperkirakan berdasarkan nama repositori; status deploy belum dapat diverifikasi melalui alat.
+
+## Update V4 — Peta Ibu Kota dan Kawasan Perdagangan Timur (14 November 2026)
+
+Peta Ibu Kota Asteria dan Kawasan Perdagangan Timur sekarang menggunakan ilustrasi yang disediakan pemain, bukan gambar polygon sebagai lapisan visual utama. Kode photo-atlas.js mengikat gambar ke mode peta kota dan menyediakan penanda interaktif yang menjelaskan landmark.
+
+File berikut harus ada dalam direktori atlas-elarion/assets/:
+- capital-illustrated.webp (Ibu Kota Kerajaan Asteria, 1448 × 1086)
+- trade-illustrated.webp (Kawasan Perdagangan Timur, 1536 × 1024)
+
+Penting: konektor GitHub pada sesi ini tidak mendukung upload gambar binary dari runtime. Perubahan kode telah di-commit, tetapi kedua gambar WEBP perlu diunggah langsung ke GitHub agar bisa dilihat publik. Sampai file diunggah, viewer tetap memakai SVG lama; pengguna juga dapat mengimpor gambar melalui tombol Pilih gambar untuk satu perangkat.
+
+Penanda atas ilustrasi yang belum tercantum dalam canon utama hanya berupa catatan peta, bukan perubahan otomatis pada canon. Angka populasi, ukuran, dan detail riwayat pada poster belum tentu lebih kuat daripada jurnal canon. Nama ibu kota Kerajaan Asteria masih belum ditetapkan.
 
 ## Pembaruan V3 — peta dengan ilustrasi 3D/isometrik
 
