@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const D=window.ATLAS,$=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg";
-let state={mode:"world",realm:"asteria",place:null,selected:null,scale:1,tx:0,ty:0,showTerrain:true,showRoads:true,showConcept:true,catalog:"all"};
+let state={mode:"world",realm:"asteria",place:null,selected:null,scale:1,tx:0,ty:0,showTerrain:true,showRoads:true,showBuildings:true,showConcept:true,catalog:"all"};
 const realm=id=>D.realms.find(r=>r.id===id), place=id=>D.places.find(p=>p.id===id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const svg=(tag,attrs={},text)=>{const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e};
@@ -51,23 +51,27 @@ function drawWorld(root){const regions=[
 ];
 regions.forEach(r=>{land(root,r.d,r.id==="asteria");const g=node(root,"g",{class:"map-hit",role:"button",tabindex:"0","aria-label":"Masuk kerajaan "+realm(r.id).name});node(g,"path",{d:r.d,fill:"transparent",stroke:r.id==="asteria"?"#e2cb92":"#b8b08a","stroke-width":r.id==="asteria"?3:1.5,"stroke-dasharray":r.id==="asteria"?"":"7 4"});node(g,"text",{x:r.x,y:r.y,class:"map-svg-label","text-anchor":"middle"},realm(r.id).name.toUpperCase());node(g,"text",{x:r.x,y:r.y+23,class:"map-svg-small","text-anchor":"middle"},realm(r.id).capital);g.addEventListener("click",()=>go("realm",r.id));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go("realm",r.id)}});g.addEventListener("pointerenter",e=>showTip(e,realm(r.id).name,"Kerajaan · Ibu kota: "+realm(r.id).capital));g.addEventListener("pointerleave",hideTip)});
 if(state.showTerrain){terrain(root,420,98,6);terrain(root,840,225,4);trees(root,402,393,6);trees(root,145,311,4)}
+if(state.showBuildings&&window.ELARION_ART)window.ELARION_ART.world(root);
 node(root,"text",{x:66,y:660,class:"map-svg-water"},"THE WESTERN SEA");node(root,"text",{x:941,y:598,class:"map-svg-water"},"THE EASTERN SEA");
 }
 function drawAsteria(root){const d="M159 237 Q200 138 329 103L447 89 525 128 614 99 748 133 895 185 980 259 1053 342 1012 442 961 528 933 648 797 704 656 672 536 699 396 661 300 604 202 527 145 390Z";
 land(root,d,true);
 if(state.showTerrain){terrain(root,299,151,10);terrain(root,753,219,6);trees(root,235,317,7);trees(root,225,362,6);trees(root,378,612,5);node(root,"ellipse",{cx:197,cy:467,rx:65,ry:31,fill:"#366b70",stroke:"#83a99a","stroke-width":2});node(root,"path",{d:"M952 550Q892 566 897 689 1050 745 1165 610 1120 534 1005 527Z",fill:"#2c545b",stroke:"#9caf96","stroke-width":2});D.terrain.forEach(t=>node(root,"text",{x:t.x,y:t.y,class:t.name.includes("Teluk")||t.name.includes("Danau")?"map-svg-water":"map-svg-terrain","text-anchor":"middle"},t.name))}
 if(state.showRoads){path(root,"M495 307Q625 285 811 339","#d7bb7d",4,"8 8");path(root,"M495 307Q540 452 588 560","#c7ac7b",3,"8 8");path(root,"M811 339Q739 480 588 560","#c7ac7b",3,"8 8")}
+if(state.showBuildings&&window.ELARION_ART)window.ELARION_ART.realm(root);
 D.places.filter(p=>p.realm==="asteria"&&(p.status!=="concept"||state.showConcept)).forEach(p=>marker(root,p,()=>{state.selected=p.id;state.mode="realm";state.realm="asteria";renderDossier();if(p.entry)go("city",p.id);else{state.selected=p.id;renderDossier()}}, {small:p.status==="concept"}));
 }
 function drawCity(root,which){const isAve=which==="avelorn",isTrade=which==="eastern-trade",isCapital=which==="capital";
-if(isCapital){land(root,"M140 170 Q400 52 640 118T1060 205L1088 530Q840 682 552 653T142 550Z",true);terrain(root,200,171,4);trees(root,824,470,8);path(root,"M180 430Q490 445 990 407","#a1b49e",14);node(root,"text",{x:615,y:320,class:"map-svg-label","text-anchor":"middle"},"IBU KOTA ASTERIA");label(root,617,355,"Peta rinci belum ditetapkan",true);marker(root,{x:618,y:436,name:"Grand Asteria Royal Plaza",type:"Lokasi upacara"},()=>selectLocal({name:"Grand Asteria Royal Plaza",type:"Lokasi kerajaan",description:"Lokasi upacara penghargaan kerajaan Day 423. Gedung, tata jalan dan detail posisi belum memiliki peta canon."}),{small:true});return}
+if(isCapital){land(root,"M140 170 Q400 52 640 118T1060 205L1088 530Q840 682 552 653T142 550Z",true);terrain(root,200,171,4);trees(root,824,470,8);path(root,"M180 430Q490 445 990 407","#a1b49e",14);if(state.showBuildings&&window.ELARION_ART)window.ELARION_ART.capital(root);node(root,"text",{x:615,y:320,class:"map-svg-label","text-anchor":"middle"},"IBU KOTA ASTERIA");label(root,617,355,"Peta rinci belum ditetapkan",true);marker(root,{x:618,y:436,name:"Grand Asteria Royal Plaza",type:"Lokasi upacara"},()=>selectLocal({name:"Grand Asteria Royal Plaza",type:"Lokasi kerajaan",description:"Lokasi upacara penghargaan kerajaan Day 423. Gedung, tata jalan dan detail posisi belum memiliki peta canon."}),{small:true});return}
 if(!isAve&&!isTrade){land(root,"M160 170Q480 80 670 145T1020 230L1000 602Q650 688 366 630T160 170Z");label(root,599,316,place(which)?.name||"Wilayah");label(root,599,350,"Belum ada peta lokal canon",true);return}
 let boundary=isAve?"M240 215L390 112 680 118 898 201 952 364 895 601 719 674 441 651 214 511 189 336Z":"M178 267Q387 128 660 182T986 298L1021 561Q724 691 396 636T178 267Z";
 land(root,boundary,true);
+if(state.showBuildings&&window.ELARION_ART)window.ELARION_ART.cityBase(root,which);
 if(isAve){node(root,"path",{d:"M110 690Q430 666 593 697T1095 675",fill:"none",stroke:"#4a8388","stroke-width":28,"stroke-opacity":".65"});node(root,"text",{x:440,y:718,class:"map-svg-water"},"Sungai Astra");trees(root,225,183,4);trees(root,723,576,5);
  if(state.showRoads){["M210 350Q555 420 934 351","M590 120Q570 389 606 654","M325 480Q524 323 744 235","M300 490Q590 520 855 435","M355 210Q472 265 538 279","M705 219Q780 373 749 596"].forEach(d=>path(root,d,"#b6a779",9))}
  const labels=[["GUDANG UTARA",565,99],["DISTRIK GUILD",450,190],["DISTRIK SARJANA",812,195],["PASAR & PUSAT",540,563],["HUNIAN BARAT",278,562],["HUNIAN TIMUR",867,304]];labels.forEach(t=>node(root,"text",{x:t[1],y:t[2],class:"map-svg-terrain","text-anchor":"middle"},t[0]));
  } else {if(state.showRoads){["M198 390Q650 385 983 399","M600 185Q574 410 600 644","M330 533Q617 270 897 540"].forEach(d=>path(root,d,"#b6a779",12))}trees(root,194,280,5)}
+if(state.showBuildings&&window.ELARION_ART)window.ELARION_ART.cityDetail(root,which);
 const locations=isAve?D.avelorn:D.trade;
 locations.forEach(p=>marker(root,p,()=>selectLocal(p),{small:true,noLabel:false}));
 }
@@ -76,6 +80,7 @@ function renderMap(){const el=$("mapSvg");el.replaceChildren();el.setAttribute("
 if(state.mode==="world")drawWorld(g);else if(state.mode==="realm"&&state.realm==="asteria")drawAsteria(g);else if(state.mode==="realm"){drawWorld(g)}else drawCity(g,state.place);
 const current=$("carto");current.setAttribute("transform","translate("+state.tx+" "+state.ty+") scale("+state.scale+")");
 $("zoomVal").textContent=Math.round(state.scale*100)+"%";
+$("mapStage").dataset.mapMode=state.mode;
 $("mapRegionLabel").textContent=state.mode==="world"?"CONTINENTAL CHART — ELARION":state.mode==="realm"?"REGIONAL CHART — "+regionName().toUpperCase():"CITY CHART — "+regionName().toUpperCase();
 $("mapHint").textContent=state.mode==="world"?"Pilih sebuah kerajaan untuk menelusurinya":state.mode==="realm"?"Klik titik lokasi untuk membaca atau masuk ke kotanya":"Klik penanda untuk membuka keterangan lokasi";
 }
@@ -134,7 +139,7 @@ function zoomTo(next){const old=state.scale;state.scale=next;state.tx=600-(600-s
 $("zoomIn").onclick=()=>zoomTo(state.scale*1.3);$("zoomOut").onclick=()=>zoomTo(state.scale/1.3);$("zoomReset").onclick=()=>{state.scale=1;state.tx=state.ty=0;updateZoom()};
 $("mapStage").addEventListener("wheel",e=>{e.preventDefault();zoomTo(state.scale*(e.deltaY<0?1.15:.87))},{passive:false});
 let dragging=false,lastX=0,lastY=0;const stage=$("mapStage");stage.addEventListener("pointerdown",e=>{if(e.target.closest(".map-controls"))return;dragging=true;lastX=e.clientX;lastY=e.clientY;});stage.addEventListener("pointermove",e=>{if(!dragging||state.scale===1)return;const box=stage.getBoundingClientRect();state.tx+=(e.clientX-lastX)*1200/box.width;state.ty+=(e.clientY-lastY)*760/box.height;lastX=e.clientX;lastY=e.clientY;updateZoom()});stage.addEventListener("pointerup",()=>dragging=false);stage.addEventListener("pointerleave",()=>dragging=false);stage.addEventListener("pointercancel",()=>dragging=false);
-$("terrainToggle").onchange=e=>{state.showTerrain=e.target.checked;if(activeMap())renderMap()};$("roadToggle").onchange=e=>{state.showRoads=e.target.checked;if(activeMap())renderMap()};$("conceptToggle").onchange=e=>{state.showConcept=e.target.checked;if(activeMap())renderMap();renderCatalog()};
+$("buildingToggle").onchange=e=>{state.showBuildings=e.target.checked;if(activeMap())renderMap()};$("terrainToggle").onchange=e=>{state.showTerrain=e.target.checked;if(activeMap())renderMap()};$("roadToggle").onchange=e=>{state.showRoads=e.target.checked;if(activeMap())renderMap()};$("conceptToggle").onchange=e=>{state.showConcept=e.target.checked;if(activeMap())renderMap();renderCatalog()};
 $("menuBtn").onclick=()=>{$("sidebar").classList.toggle("open");$("mobileShade").classList.toggle("open")};$("mobileShade").onclick=closeMobile;
 document.querySelectorAll(".nav-link").forEach(b=>b.onclick=()=>topView(b.dataset.top));$("searchInput").oninput=search;$("searchShortcut").onclick=()=>{$("sidebar").classList.add("open");$("mobileShade").classList.add("open");$("searchInput").focus()};
 window.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMobile();$("infoModal").hidden=true;hideTip()}if(e.key==="/"&&!["INPUT","TEXTAREA"].includes(document.activeElement.tagName)){e.preventDefault();$("sidebar").classList.add("open");$("mobileShade").classList.add("open");$("searchInput").focus()}});
