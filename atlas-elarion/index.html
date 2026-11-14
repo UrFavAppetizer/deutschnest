@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b151c">
+<meta name="description" content="Atlas interaktif resmi Elarion — jelajahi Asteria, Avelorn, kerajaan tetangga, lokasi dan kronik The Stars Beyond Eternity.">
+<meta property="og:title" content="Atlas Resmi Elarion | The Stars Beyond Eternity">
+<meta property="og:description" content="A living fantasy atlas. From kingdoms to the streets of Avelorn.">
+<title>Atlas Resmi Elarion — The Stars Beyond Eternity</title>
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="./data.js" defer></script>
+<script src="./app.js" defer></script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="app-shell" id="app">
+ <header class="topbar">
+  <button class="icon-button mobile-menu" id="menuBtn" aria-label="Buka navigasi">☰</button>
+  <a class="brand" href="#world" aria-label="Kembali ke Atlas Elarion">
+   <span class="brand-mark"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3 39 25 61 32 39 39 32 61 25 39 3 32 25 25Z"/><circle cx="32" cy="32" r="8"/></svg></span>
+   <span><strong>ATLAS <em>ELARION</em></strong><small>THE STARS BEYOND ETERNITY</small></span>
+  </a>
+  <nav class="topnav" aria-label="Navigasi utama">
+   <button class="nav-link is-active" data-top="world">Peta Dunia</button>
+   <button class="nav-link" data-top="asteria">Kerajaan Asteria</button>
+   <button class="nav-link" data-top="catalog">Ensiklopedia</button>
+   <button class="nav-link" data-top="chronicle">Kronik</button>
+  </nav>
+  <div class="top-actions">
+   <span class="top-edition"><span class="live-dot"></span> CANON ATLAS • V1.1</span>
+   <button class="icon-button" id="searchShortcut" aria-label="Cari lokasi">⌕</button>
+  </div>
+ </header>
+ <aside class="sidebar" id="sidebar">
+  <div class="sidebar-scroll">
+    <div class="eyebrow">THE GRAND ARCHIVE <span class="line"></span> 847 ASTRAL</div>
+    <div class="sidebar-title">Explore the<br><em>known world.</em></div>
+    <p class="sidebar-desc">Setiap kerajaan menyimpan kisah. Setiap titik adalah bagian dari legenda yang masih ditulis.</p>
+    <label class="search-box" for="searchInput"><span>⌕</span><input id="searchInput" type="search" placeholder="Cari kerajaan, kota, lokasi..." autocomplete="off"><kbd>/</kbd></label>
+    <div id="searchResults" class="search-results" hidden></div>
+    <div class="sidebar-section-title">WILAYAH TERPETAKAN <span>05</span></div>
+    <div id="realmList" class="realm-list"></div>
+    <div class="sidebar-section-title">PENJELAJAHAN <span>LAYERS</span></div>
+    <div class="layer-list">
+      <label class="layer-line"><input id="terrainToggle" type="checkbox" checked><span class="checkmark"></span><span>Bentang alam & wilayah</span></label>
+      <label class="layer-line"><input id="roadToggle" type="checkbox" checked><span class="checkmark"></span><span>Jalur perjalanan</span></label>
+      <label class="layer-line"><input id="conceptToggle" type="checkbox"><span class="checkmark"></span><span>Kota konsep <small>non-canon</small></span></label>
+    </div>
+    <div class="sidebar-section-title">STATUS ARSIP</div>
+    <div class="legend-grid"><span><i class="legend-dot official"></i> Canon resmi</span><span><i class="legend-dot limited"></i> Detail tertutup</span><span><i class="legend-dot draft"></i> Konsep</span></div>
+    <button class="archive-note" id="canonInfo"><span>✧</span><span><strong>Sumpah Penjaga Canon</strong><small>Informasi dari cerita tidak akan berubah tanpa keputusan pemain.</small></span><span>↗</span></button>
+  </div>
+  <div class="sidebar-footer"><span>✦</span><div><strong>THE TWIN-FANGED STAR</strong><small>A living record of Ryujin Lykaios</small></div></div>
+ </aside>
+ <div id="mobileShade" class="mobile-shade"></div>
+ <main class="main-area">
+  <div class="atlas-heading">
+   <div><div id="breadcrumbs" class="breadcrumbs"></div><h1 id="mapTitle">The World of <em>Elarion</em></h1><p id="mapSubtitle">Lima kerajaan. Ribuan kisah. Satu bintang yang akan mengubah segalanya.</p></div>
+   <div class="header-coordinates"><span>✧ THE ASTRAL ARCHIVES ✧</span><strong id="mapCode">ELARION · 001</strong></div>
+  </div>
+  <section id="atlasView" class="atlas-workspace" aria-label="Peta interaktif">
+    <div class="map-card">
+      <div class="map-topline"><span><i class="gold-square"></i><span id="mapRegionLabel">CONTINENTAL CHART — ELARION</span></span><div class="map-top-right"><span class="map-live">✦ CARTOGRAPHIC RECORD</span><span id="zoomVal">100%</span></div></div>
+      <div id="mapStage" class="map-stage"><svg id="mapSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Peta interaktif dunia Elarion"></svg><div id="mapTooltip" class="map-tooltip" hidden></div><div class="map-vignette"></div><div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="29"/><path d="M40 4 46 34 76 40 46 46 40 76 34 46 4 40 34 34Z"/><circle cx="40" cy="40" r="5"/></svg><span>S</span></div><div class="map-controls"><button id="zoomIn" aria-label="Perbesar peta">+</button><button id="zoomOut" aria-label="Perkecil peta">−</button><button id="zoomReset" title="Kembali ke ukuran awal" aria-label="Reset zoom">⌖</button></div><div class="map-bottom"><span>✧ <span id="mapHint">Pilih sebuah kerajaan untuk menelusurinya</span></span><span>SKALA ILUSTRATIF · BUKAN SURVEI</span></div></div>
+    </div>
+    <aside id="dossier" class="dossier" aria-live="polite"></aside>
+  </section>
+  <section id="catalogView" class="content-view" hidden><div class="content-heading"><span class="eyebrow">THE GRAND ARCHIVE · INDEX</span><h2>Ensiklopedia <em>Lokasi</em></h2><p>Temukan setiap kerajaan, pemukiman, dan lokasi yang telah dicatat. Data canon dibedakan dari konsep pengembangan.</p></div><div id="catalogFilters" class="catalog-filters"></div><div id="catalogGrid" class="catalog-grid"></div></section>
+  <section id="chronicleView" class="content-view" hidden><div class="content-heading"><span class="eyebrow">THE ASTRAL CHRONICLE</span><h2>Jejak Sang <em>Bintang</em></h2><p>Peristiwa-peristiwa yang membentuk geografi perjalanan Ryujin Lykaios.</p></div><div id="timeline" class="timeline"></div></section>
+  <footer class="main-footer"><span>ATLAS Elarion · Arsip TSE-ATLAS-ELARION-001</span><span>✦ LIVING WORLD · THE STARS BEYOND ETERNITY ✦</span><span>Canon by the player · Illustrated chart</span></footer>
+ </main>
+</div>
+<div id="infoModal" class="modal-wrap" hidden><div class="modal-shade" data-close></div><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-x" data-close aria-label="Tutup">✕</button><div class="eyebrow">ARCHIVE CHARTER</div><h2 id="modalTitle">Penjaga <em>Canon</em></h2><div id="modalContent"></div><button class="ornate-button" data-close>Tutup Arsip</button></div></div>
+</body>
+</html>
