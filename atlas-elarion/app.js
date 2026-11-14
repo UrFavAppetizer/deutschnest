@@ -83,6 +83,7 @@ $("zoomVal").textContent=Math.round(state.scale*100)+"%";
 $("mapStage").dataset.mapMode=state.mode;
 $("mapRegionLabel").textContent=state.mode==="world"?"CONTINENTAL CHART — ELARION":state.mode==="realm"?"REGIONAL CHART — "+regionName().toUpperCase():"CITY CHART — "+regionName().toUpperCase();
 $("mapHint").textContent=state.mode==="world"?"Pilih sebuah kerajaan untuk menelusurinya":state.mode==="realm"?"Klik titik lokasi untuk membaca atau masuk ke kotanya":"Klik penanda untuk membuka keterangan lokasi";
+if(window.AtlasPhoto)window.AtlasPhoto.sync(state);
 }
 function dossierData(){if(state.mode==="world")return {name:"Benua Elarion",type:"THE KNOWN WORLD",description:"Sebuah dunia yang dipisahkan oleh wilayah dan disatukan oleh legenda. Lima kerajaan kini tercatat dalam Atlas Elarion.",details:"Asteria adalah wilayah fokus cerita. Peta ini menggambarkan arah relatif antarkerajaan; batas dan jarak tidak merupakan data geodesi.",status:"canon",icon:"✧"};
 if(state.mode==="realm"){return state.selected?place(state.selected)||realm(state.realm):realm(state.realm)}
@@ -134,7 +135,7 @@ function search(){let q=$("searchInput").value.trim().toLowerCase(),box=$("searc
 box.hidden=false;box.innerHTML=rows.length?rows.map(p=>'<button data-kind="'+p.kind+'" data-id="'+esc(p.id)+'"><strong>'+esc(p.name)+'</strong><small>'+esc(p.type||p.region||"Kerajaan")+'</small></button>').join(""):'<div style="padding:14px;color:#a9b7ae">Tidak ditemukan dalam indeks arsip.</div>';
 box.querySelectorAll("button").forEach(b=>b.onclick=()=>{const kind=b.dataset.kind,id=b.dataset.id;box.hidden=true;$("searchInput").value="";if(kind==="realm")go("realm",id);else if(kind==="place"){const p=place(id);if(p.entry)go("city",id);else{go("realm",p.realm);state.selected=id;renderDossier()}}else{go("city",kind==="avelorn"?"avelorn":"eastern-trade");selectLocal((kind==="avelorn"?D.avelorn:D.trade).find(p=>p.id===id))}})}
 function closeMobile(){$("sidebar").classList.remove("open");$("mobileShade").classList.remove("open")}
-function updateZoom(){state.scale=Math.max(1,Math.min(3.2,state.scale));const range=1200*(state.scale-1);const rangeY=760*(state.scale-1);state.tx=Math.max(-range,Math.min(0,state.tx));state.ty=Math.max(-rangeY,Math.min(0,state.ty));const g=$("carto");if(g)g.setAttribute("transform","translate("+state.tx+" "+state.ty+") scale("+state.scale+")");$("zoomVal").textContent=Math.round(state.scale*100)+"%"}
+function updateZoom(){state.scale=Math.max(1,Math.min(3.2,state.scale));const range=1200*(state.scale-1);const rangeY=760*(state.scale-1);state.tx=Math.max(-range,Math.min(0,state.tx));state.ty=Math.max(-rangeY,Math.min(0,state.ty));const g=$("carto");if(g)g.setAttribute("transform","translate("+state.tx+" "+state.ty+") scale("+state.scale+")");$("zoomVal").textContent=Math.round(state.scale*100)+"%";if(window.AtlasPhoto)window.AtlasPhoto.transform(state)}
 function zoomTo(next){const old=state.scale;state.scale=next;state.tx=600-(600-state.tx)*state.scale/old;state.ty=380-(380-state.ty)*state.scale/old;updateZoom()}
 $("zoomIn").onclick=()=>zoomTo(state.scale*1.3);$("zoomOut").onclick=()=>zoomTo(state.scale/1.3);$("zoomReset").onclick=()=>{state.scale=1;state.tx=state.ty=0;updateZoom()};
 $("mapStage").addEventListener("wheel",e=>{e.preventDefault();zoomTo(state.scale*(e.deltaY<0?1.15:.87))},{passive:false});
