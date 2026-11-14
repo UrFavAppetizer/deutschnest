@@ -1,0 +1,27 @@
+
+/* Elarion — Illustrated Atlas 3D-style image viewer */
+.map-stage.illustrated-active{aspect-ratio:var(--art-ratio,1.33333);height:auto;min-height:0;background:#182629;transition:background .18s ease}
+.map-stage.illustrated-active:before,.map-stage.illustrated-active .map-vignette{display:none}
+.map-stage.illustrated-active .compass{display:none}
+.map-stage.illustrated-active .map-bottom{z-index:8;background:linear-gradient(0deg,rgba(7,13,22,.91),transparent);padding:15px 19px}
+.map-stage.illustrated-active .map-controls{z-index:9}
+.atlas-photo-pane{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none}
+.atlas-photo-frame{position:absolute;inset:0;width:100%;height:100%;transform-origin:0 0;will-change:transform;pointer-events:none}
+.atlas-photo-img{display:block;width:100%;height:100%;object-fit:fill;user-select:none;-webkit-user-drag:none;filter:saturate(1.05) contrast(1.03)}
+.atlas-photo-spots{position:absolute;inset:0;pointer-events:none}
+.art-hotspot{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;padding:0;border:0;background:none;color:#fbe6af;z-index:2;pointer-events:auto;display:grid;place-items:center;cursor:pointer}
+.art-hotspot-orbit{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;border:2px solid #f2d493;background:rgba(10,25,27,.72);box-shadow:0 2px 8px #000c,0 0 0 5px #e4cc8e32,0 0 15px #fbdd9860;transition:transform .15s}
+.art-hotspot-core{font-family:Georgia,serif;font-size:13px;line-height:1;text-shadow:0 0 5px #000}
+.art-hotspot:hover .art-hotspot-orbit,.art-hotspot:focus-visible .art-hotspot-orbit{transform:scale(1.2);background:#e1b878;color:#25363a}
+.art-hotspot-tip{position:absolute;bottom:calc(100% + 3px);left:50%;transform:translateX(-50%);display:none;white-space:nowrap;pointer-events:none;background:#14272bef;border:1px solid #e3c58e;color:#f8e5b5;padding:8px 11px;border-radius:3px;font:600 10px var(--serif,Georgia,serif);letter-spacing:.3px;box-shadow:0 3px 16px #0009}
+.art-hotspot:is(:hover,:focus-visible) .art-hotspot-tip{display:block}
+.atlas-photo-tools{position:absolute;left:10px;top:10px;z-index:12;max-width:calc(100% - 120px);border:1px solid #d5b98478;background:linear-gradient(120deg,#10282edc,#203b39d9);box-shadow:0 5px 22px #0008;border-radius:5px;color:#f2dfba;backdrop-filter:blur(7px);padding:8px 11px;display:grid;gap:4px}
+.atlas-photo-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.atlas-photo-symbol{font-size:17px}
+.atlas-photo-top strong{font:600 10px var(--serif,Georgia,serif);letter-spacing:1.1px;margin-right:6px}
+.atlas-photo-mode,.atlas-photo-upload{border:1px solid #b49d70;background:#223937eb;color:#e8d2a5;border-radius:2px;padding:7px 9px;white-space:nowrap;font-size:10px;cursor:pointer}
+.atlas-photo-mode:hover,.atlas-photo-upload:hover{background:#dec18a;color:#142b2e}
+.atlas-photo-status{font-size:9px;color:#cad3c2;letter-spacing:.2px;max-width:390px;line-height:1.4}
+.map-stage.art-drag:after{content:"Lepas gambar untuk memasang peta ilustrasi";position:absolute;inset:0;display:grid;place-items:center;background:#0e222ad9;border:3px dashed #e0c28a;z-index:20;font:20px var(--serif);color:#e4cb93}
+@media(max-width:800px){.atlas-photo-tools{left:6px;top:6px;max-width:calc(100% - 48px);padding:5px 8px}.atlas-photo-top{gap:5px}.atlas-photo-top strong{font-size:8px}.atlas-photo-mode,.atlas-photo-upload{font-size:9px;padding:5px 6px}.atlas-photo-status{font-size:8px}.art-hotspot{width:31px;height:31px}.art-hotspot-orbit{width:23px;height:23px}.art-hotspot-core{font-size:11px}.map-stage.illustrated-active .map-controls{bottom:52px}.map-stage.illustrated-active .map-bottom span:last-child{display:none}}
+@media(prefers-reduced-motion:reduce){.art-hotspot-orbit,.map-stage.illustrated-active{transition:none}}
