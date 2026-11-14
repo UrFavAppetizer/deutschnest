@@ -1,4 +1,4 @@
-# Atlas Resmi Elarion ✦ — Illustrated Map V2
+# Atlas Resmi Elarion ✦ — Illustrated Atlas V3
 
 **The Stars Beyond Eternity — Interactive Canon Atlas**
 
@@ -10,6 +10,18 @@ Buka `index.html` dengan browser modern. Untuk hosting, GitHub Pages harus diakt
 https://urfavappetizer.github.io/deutschnest/atlas-elarion/
 
 **Catatan:** URL di atas adalah format alamat yang diperkirakan berdasarkan nama repositori; status deploy belum dapat diverifikasi melalui alat.
+
+## Pembaruan V3 — peta dengan ilustrasi 3D/isometrik
+
+Sistem peta baru (`photo-atlas.js` + `photo-atlas.css`) memakai ilustrasi berkualitas tinggi, bukan hanya bentuk SVG sederhana. Ada hotspot interaktif yang membuka kerajaan, kota atau landmark dengan data canon yang sama. Mode foto mengikuti zoom, dan bisa beralih ke peta vektor.
+
+**Status publikasi aset:** Kode sudah diperbarui pada branch `main`. Dua gambar WebP dalam paket distribusi belum dapat ditambahkan lewat konektor GitHub ini, karena tindakan yang tersedia untuk menulis file pada repository hanya menerima teks. Untuk menampilkan ilustrasi bagi semua pengunjung, buka `atlas-elarion/assets/`, lalu pilih **Add file → Upload files** dan unggah:
+- `asteria-illustrated.webp`
+- `avelorn-illustrated.webp`
+
+Tanpa langkah tersebut, website tetap berfungsi memakai peta SVG. Sebagai alternatif langsung di satu perangkat, klik **Pilih gambar** pada toolbar peta lalu pilih file WebP sesuai wilayah; gambar disimpan di IndexedDB lokal dan bukan diunggah secara otomatis.
+
+Ilustrasi ini tampak 3D/isometrik, tetapi **bukan** dunia 3D nyata yang kameranya bisa diputar. Itu memerlukan engine/WebGL tersendiri.
 
 ## Pembaruan V2 — 14 November 2026
 - Peta SVG bergambar dengan permukiman, rumah-rumah medieval, benteng, gerbang, kapal, hutan dan pegunungan.
@@ -36,7 +48,9 @@ Seluruh penempatan titik, bentuk wilayah, bentuk jalan, dan detail kartografi ya
 ## Memperbarui
 - `data.js`: nama kerajaan, deskripsi, kota, landmark, kronik. Nama kota konsep boleh diganti/disahkan hanya setelah persetujuan pemain.
 - `app.js`: seluruh interaksi dan gambar SVG dinamis.
-- `map-art.js`: ilustrasi bangunan, rumah, dinding kota, hutan, kapal, dan bentang alam.
+- `map-art.js`: ilustrasi bangunan SVG cadangan.
+- `photo-atlas.js` dan `photo-atlas.css`: ilustrasi gambar detail dengan hotspot dan impor gambar.
+- `assets/`: gambar WebP; daftar lokasi tetap dikendalikan oleh data canon dalam `data.js`.
 - `style.css`: tema, font, tampilan mobile.
 - `index.html`: struktur UI.
 
