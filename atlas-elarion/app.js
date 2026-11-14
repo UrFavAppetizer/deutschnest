@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const D=window.ATLAS,$=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg";
-let state={mode:"world",realm:"asteria",place:null,selected:null,scale:1,tx:0,ty:0,showTerrain:true,showRoads:true,showConcept:false,catalog:"all"};
+let state={mode:"world",realm:"asteria",place:null,selected:null,scale:1,tx:0,ty:0,showTerrain:true,showRoads:true,showConcept:true,catalog:"all"};
 const realm=id=>D.realms.find(r=>r.id===id), place=id=>D.places.find(p=>p.id===id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const svg=(tag,attrs={},text)=>{const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e};
