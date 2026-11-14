@@ -25,3 +25,15 @@
 .map-stage.art-drag:after{content:"Lepas gambar untuk memasang peta ilustrasi";position:absolute;inset:0;display:grid;place-items:center;background:#0e222ad9;border:3px dashed #e0c28a;z-index:20;font:20px var(--serif);color:#e4cb93}
 @media(max-width:800px){.atlas-photo-tools{left:6px;top:6px;max-width:calc(100% - 48px);padding:5px 8px}.atlas-photo-top{gap:5px}.atlas-photo-top strong{font-size:8px}.atlas-photo-mode,.atlas-photo-upload{font-size:9px;padding:5px 6px}.atlas-photo-status{font-size:8px}.art-hotspot{width:31px;height:31px}.art-hotspot-orbit{width:23px;height:23px}.art-hotspot-core{font-size:11px}.map-stage.illustrated-active .map-controls{bottom:52px}.map-stage.illustrated-active .map-bottom span:last-child{display:none}}
 @media(prefers-reduced-motion:reduce){.art-hotspot-orbit,.map-stage.illustrated-active{transition:none}}
+
+/* V4: inspectable locations from supplied capital / trading-district maps */
+.art-hotspot-note .art-hotspot-orbit{width:23px;height:23px;background:rgba(35,44,53,.74);border-color:#b8d0c6;box-shadow:0 2px 6px #000b,0 0 0 3px #aac8c425}
+.art-hotspot-note .art-hotspot-core{font-size:11px;color:#dce6df}
+.art-hotspot-note .art-hotspot-tip{border-color:#9aafa4;color:#e1ebdf}
+.art-location-info{position:absolute;left:50%;bottom:55px;transform:translateX(-50%);max-width:min(370px,calc(100% - 28px));width:max-content;min-width:230px;background:#10262aef;border:1px solid #e0c68d;color:#f3e6cb;box-shadow:0 14px 36px #000b;border-radius:6px;z-index:11;pointer-events:auto;padding:15px 36px 15px 16px;backdrop-filter:blur(8px)}
+.art-location-info small{display:block;color:#dec08a;font:9px var(--serif,Georgia,serif);letter-spacing:1px}
+.art-location-info strong{display:block;font:18px var(--literary,Georgia,serif);margin:7px 0}
+.art-location-info p{font-size:11px;line-height:1.6;color:#d5dfd6;margin:0 0 8px}
+.art-location-info span{display:block;font-size:9px;color:#aeaf9f}
+.art-info-close{position:absolute;right:8px;top:8px;cursor:pointer;color:#ead4a3;background:none;border:0;padding:4px 6px;font-size:13px}
+@media(max-width:760px){.art-location-info{bottom:63px;padding:11px 30px 11px 11px;min-width:180px}.art-location-info strong{font-size:15px}.art-hotspot-note .art-hotspot-orbit{width:20px;height:20px}}
