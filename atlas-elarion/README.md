@@ -1,4 +1,4 @@
-# Atlas Resmi Elarion ✦
+# Atlas Resmi Elarion ✦ — Illustrated Map V2
 
 **The Stars Beyond Eternity — Interactive Canon Atlas**
 
@@ -10,6 +10,14 @@ Buka `index.html` dengan browser modern. Untuk hosting, GitHub Pages harus diakt
 https://urfavappetizer.github.io/deutschnest/atlas-elarion/
 
 **Catatan:** URL di atas adalah format alamat yang diperkirakan berdasarkan nama repositori; status deploy belum dapat diverifikasi melalui alat.
+
+## Pembaruan V2 — 14 November 2026
+- Peta SVG bergambar dengan permukiman, rumah-rumah medieval, benteng, gerbang, kapal, hutan dan pegunungan.
+- Peta Avelorn memiliki ilustrasi khusus untuk Guild, Starhaven, rumah penduduk, menara Arcana, pasar, penginapan, dan bengkel.
+- Kawasan Perdagangan Timur memiliki ilustrasi Duskcrown, Emberforge, bengkel Eamon dan gudang.
+- Ibu kota memiliki tampilan arsitektur konseptual: hanya visualisasi, bukan peta bangunan canon.
+- Tombol lapisan 'Bangunan & detail ilustrasi' mematikan atau menghidupkan ilustrasi tanpa mematikan interaksi peta.
+- Sumber ilustrasi original: `map-art.js`; tidak perlu asset tambahan atau lisensi gambar luar.
 
 ## Navigasi
 - Atlas benua → klik kerajaan → klik kota → lihat tempat di kota.
@@ -23,11 +31,12 @@ https://urfavappetizer.github.io/deutschnest/atlas-elarion/
 ## Integritas canon
 Sumber utama: **ATLAS_RESMI_ELARION_CANON_V1.md**, disahkan pengguna 3 Nov 2026 (arsip TSE-ATLAS-ELARION-001). Perkembangan kampanye setelah itu menjadi koreksi temporal; misalnya Ryujin **sudah** tiba di ibu kota pada Day 420.
 
-Seluruh penempatan titik, bentuk wilayah, bentuk jalan, dan detail kartografi yang belum disahkan adalah representasi ilustratif, bukan canon topografi presisi. Satu-satunya kota baru di dalam data adalah **konsep non-canon** yang disembunyikan secara default. Asal-usul para peserta turnamen dari kota-kota lain tidak diasumsikan atau dikarang.
+Seluruh penempatan titik, bentuk wilayah, bentuk jalan, dan detail kartografi yang belum disahkan adalah representasi ilustratif, bukan canon topografi presisi. Kota-kota baru dalam data adalah **konsep non-canon**; ditampilkan dengan penanda jelas melalui lapisan konsep yang dapat dimatikan kapan saja. Asal-usul para peserta turnamen dari kota-kota lain tidak diasumsikan atau dikarang.
 
 ## Memperbarui
 - `data.js`: nama kerajaan, deskripsi, kota, landmark, kronik. Nama kota konsep boleh diganti/disahkan hanya setelah persetujuan pemain.
 - `app.js`: seluruh interaksi dan gambar SVG dinamis.
+- `map-art.js`: ilustrasi bangunan, rumah, dinding kota, hutan, kapal, dan bentang alam.
 - `style.css`: tema, font, tampilan mobile.
 - `index.html`: struktur UI.
 
