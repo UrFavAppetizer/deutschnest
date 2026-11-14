@@ -60,7 +60,7 @@ const scenes={
    {x:69.6,y:49.7,name:"Gudang #4",t:"local",id:"warehouse4"},
    {x:63.6,y:55.9,name:"Distrik Pelabuhan",t:"note",id:"trade-harbor",detail:"Distrik perairan dan dermaga pada ilustrasi kawasan."},
    {x:31.9,y:30.2,name:"Distrik Riset & Akademik",t:"note",id:"trade-academy",detail:"Zona riset dan akademik pada peta yang dikirimkan pemain."},
-   {x:69.6,y:49,name:"Klinik Nessa Briar (peta)",t:"note",id:"trade-nessa",detail:"Nama klinik tercantum pada peta ilustrasi. Jangan otomatis menyamakan dengan Pusat Perawatan Nessa Briar yang sudah canon di Avelorn."},
+   {x:74.2,y:54.6,name:"Klinik Nessa Briar (peta)",t:"note",id:"trade-nessa",detail:"Nama klinik tercantum pada peta ilustrasi. Jangan otomatis menyamakan dengan Pusat Perawatan Nessa Briar yang sudah canon di Avelorn."},
    {x:57.2,y:67,name:"Permukiman Selatan",t:"note",id:"trade-south",detail:"Permukiman selatan berdasarkan ilustrasi peta."},
    {x:42.8,y:17.4,name:"Permukiman Utara",t:"note",id:"trade-north",detail:"Permukiman utara berdasarkan ilustrasi peta."}
   ]
@@ -98,7 +98,7 @@ function currentScene(){const fragment=location.hash.slice(1);if(fragment==="wor
 function removeImage(){if(imgUrl?.startsWith("blob:"))URL.revokeObjectURL(imgUrl);imgUrl=null;img.onload=null;img.onerror=null;img.removeAttribute("src");pane.hidden=true;$("mapStage").classList.remove("illustrated-active");$("mapSvg").style.opacity="";$("mapSvg").style.pointerEvents="";$("mapStage").style.removeProperty("--art-ratio");hotspots.replaceChildren();if(info)info.hidden=true;}
 function mark(label){if(status)status.textContent=label}
 function renderSpots(key,mode){hotspots.replaceChildren();if(info)info.hidden=true;
- const arr=scenes[key].points.filter(p=>(mode==="world"?p.t==="realm":mode==="realm"?p.t==="place":p.t==="local"));
+ const arr=scenes[key].points.filter(p=>(mode==="world"?p.t==="realm":mode==="realm"?p.t==="place":(p.t==="local"||p.t==="note")));
  for(const loc of arr){const b=document.createElement("button");b.type="button";b.className="art-hotspot"+(loc.t==="note"?" art-hotspot-note":"");b.style.left=loc.x+"%";b.style.top=loc.y+"%";b.dataset.id=loc.id;b.innerHTML='<span class="art-hotspot-orbit"><span class="art-hotspot-core">✦</span></span><span class="art-hotspot-tip">'+loc.name+'</span>';b.setAttribute("aria-label","Buka "+loc.name);b.title=loc.name;b.onclick=()=>openLocation(loc);hotspots.appendChild(b);}
 }
 function openLocation(loc){
